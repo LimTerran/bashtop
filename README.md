@@ -5,18 +5,23 @@
 
 ## Index
 
+* [Changelog](#changelog)
 * [Description](#description)
 * [Features](#features)
 * [Themes](#themes)
 * [Upcoming](#upcoming-(osx-and-bsd-support))
-* [Support and funding](#support-and-funding) (New)
-* [Compability](#compability)
+* [Support and funding](#support-and-funding) (Updated)
+* [Compatibility](#compatibility)
 * [Dependencies](#dependencies)
 * [Screenshots](#screenshots)
-* [Installation](#installation) (Updated)
+* [Installation](#installation)
 * [Configurability](#configurability)
 * [TODO](#todo) (Updated)
 * [License](#license)
+
+## Changelog
+
+#### [CHANGELOG.md](CHANGELOG.md)
 
 ## Description
 
@@ -47,23 +52,27 @@ Let me know if you want to contribute with new themes.
 Currently rewriting to use python3 [psutil](https://github.com/giampaolo/psutil) for data collection instead of linux specific tools.
 This will add python 3 and psutil as dependencies, but will make bashtop cross platform compatible.
 
-This will be in a new branch called bashtop-psutil when I'm done with inital testing
+This will be in a new branch called bashtop-psutil when I'm done with initial testing
 
 ## Support and funding
 
-Bug fixes and updates might be slow during normal workdays since i work full time as an industrial worker and don't have much time or energy left during the week.
+Bug fixes and updates might be slow during normal workdays since I work full time as an industrial worker and don't have much time or energy left during the week.
 I'm looking into ways of funding this project that would allow me to take off time from my day job to work on this.
 
 Any advice on how to get funding for open source projects is very welcome!
 
-## Compability
+#### Update
+
+You can now sponsor this project through github, see [my sponsors page](https://github.com/sponsors/aristocratos) for options.
+
+## Compatibility
 
 Should work on most modern linux distributions with a truecolor capable terminal.
 
 ## Dependencies
 
 **[bash](https://www.gnu.org/software/bash/)** (v4.4 or later) Script functionality will most probably break with earlier versions.  
-Bash version 5 is higly recommended to make use of $EPOCHREALTIME variable instead of alot of external date command calls.
+Bash version 5 is highly recommended to make use of $EPOCHREALTIME variable instead of a lot of external date command calls.
 
 **[GNU Core Utilities](https://www.gnu.org/software/coreutils/)**
 
@@ -137,7 +146,7 @@ color_theme="Default"
 update_ms="2500"
 
 #* Processes sorting, "pid" "program" "arguments" "threads" "user" "memory" "cpu lazy" "cpu responsive"
-#* "cpu lazy" upates sorting over time, "cpu responsive" updates sorting directly at a cpu usage cost
+#* "cpu lazy" updates sorting over time, "cpu responsive" updates sorting directly at a cpu usage cost
 proc_sorting="cpu lazy"
 
 #* Reverse sorting order, "true" or "false"
@@ -168,16 +177,20 @@ USAGE: bashtop
 
 ## TODO
 
-In order of priority.
+Might finish off items out of order since I usually work on multiple at a time.
 
-- [x] TODO Add options to change colors for text, graphs and meters.
-- [ ] TODO Fix cross platform compatibility: Currently in testing, bashtop-psutil branch.
-- [ ] TODO Add gpu temp and usage. (If feasible)
-- [ ] TODO Add io stats for disks.
-- [ ] TODO Add options for resizing all boxes.
-- [ ] TODO Add command line argument parsing.
-- [ ] TODO Miscellaneous optimizations and code cleanup.
-- [ ] TODO Add more commenting where it's sparse.
+- [x] Add options to change colors for text, graphs and meters.
+- [ ] Fix cross platform compatibility: Currently in testing, bashtop-psutil branch.
+- [ ] Add support for showing AMD cpu temperatures.
+- [ ] Add option to show tree view of processes.
+- [ ] Add option to reset network download/upload totals.
+- [ ] Add option to turn of gradient in processes list.
+- [ ] Add gpu temp and usage. (If feasible)
+- [ ] Add io stats for disks.
+- [ ] Add options for resizing all boxes.
+- [ ] Add command line argument parsing.
+- [ ] Miscellaneous optimizations and code cleanup.
+- [ ] Add more commenting where it's sparse.
 
 ## LICENSE
 

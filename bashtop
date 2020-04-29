@@ -29,6 +29,29 @@
 #    limitations under the License.
 
 declare -x LC_MESSAGES="C" LC_NUMERIC="C" LC_ALL=""
+
+#* Fail if running on unsupported OS
+case "$(uname -s)" in
+	Linux*)  system=Linux;;
+	Darwin*) system=MacOS;;
+	CYGWIN*) system=Cygwin;;
+	MINGW*)  system=MinGw;;
+	*)       system="Other"
+esac
+if [[ "$system" != "Linux" ]]; then
+	echo "This version of bashtop does not support $system platform."
+	exit 1
+fi
+
+#* Fail if Bash version is below 4.4
+bash_version_major="$(echo $BASH_VERSION | cut -d "." -f 1)"
+bash_version_minor="$(echo $BASH_VERSION | cut -d "." -f 2)"
+if [[ "$bash_version_major" -lt 4 ]] || [[ "$bash_version_major" == 4 && "$bash_version_minor" -lt 4 ]]; then
+	echo "ERROR: Bash 4.4 or later is required (you are using Bash $bash_version_major.$bash_version_minor)."
+	echo "       Consider upgrading your distribution to get a more recent Bash version."
+	exit 1
+fi
+
 shopt -qu failglob nullglob
 shopt -qs extglob globasciiranges globstar
 
@@ -41,7 +64,7 @@ banner=(
 "██╔══██╗██╔══██║╚════██║██╔══██║   ██║   ██║   ██║██╔═══╝ "
 "██████╔╝██║  ██║███████║██║  ██║   ██║   ╚██████╔╝██║     "
 "╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝     ")
-declare version="0.8.15"
+declare version="0.8.16"
 declare banner_width=${#banner[0]}
 banner_colors=("#E62525" "#CD2121" "#B31D1D" "#9A1919" "#801414")
 
@@ -172,7 +195,6 @@ else
 		read ms_out < <(date +%s%3N)
 	}
 fi
-
 
 init_() { #? Collect needed information and set options before startig main loop
 	local i
@@ -779,8 +801,7 @@ get_themes() {
 	for file in "${theme_dir}"/*.theme; do
 		file="${file##*/}"
 		if [[ ${file} != "*.theme" ]]; then themes+=("${file%.theme}"); fi
-		if [[ ${themes[-1]} == "${color_theme}" ]]; then theme_int=$i; fi
-		((i++))
+		if [[ ${themes[-1]} == "${color_theme}" ]]; then theme_int=${#themes[@]}-1; fi
 	done
 }
 
