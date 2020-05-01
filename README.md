@@ -1,11 +1,12 @@
 # ![bashtop](Imgs/logo-t.png)
 
-![os](https://img.shields.io/badge/Os-Linux-yellow)
+![os](https://img.shields.io/badge/Os-Linux-yellow?logo=linux)
 ![usage](https://img.shields.io/badge/Usage-Linux%20resource%20monitor-red) 
-![Bash](https://img.shields.io/badge/Bash-v4.4%5E-blue) 
+![Bash](https://img.shields.io/badge/Bash-v4.4%5E-green?logo=GNU%20bash) 
 ![bashtop_version](https://img.shields.io/github/v/tag/aristocratos/bashtop?label=version)
-[![Donate](https://img.shields.io/badge/-Donate-green)](https://github.com/sponsors/aristocratos)
-
+[![Donate](https://img.shields.io/badge/-Donate-yellow?logo=paypal)](https://paypal.me/aristocratos)
+[![Sponsor](https://img.shields.io/badge/-Sponsor-red?logo=github)](https://github.com/sponsors/aristocratos)
+[![Coffee](https://img.shields.io/badge/-Buy%20me%20a%20Coffee-grey?logo=Ko-fi)](https://ko-fi.com/aristocratos)
 ## Index
 
 * [Changelog](#changelog)
@@ -13,13 +14,13 @@
 * [Features](#features)
 * [Themes](#themes)
 * [Upcoming](#upcoming-(osx-and-bsd-support))
-* [Support and funding](#support-and-funding)
+* [Support and funding](#support-and-funding) (Updated)
 * [Compatibility](#compatibility) (Updated)
 * [Dependencies](#dependencies)
 * [Screenshots](#screenshots)
-* [Installation](#installation)
+* [Installation](#installation) (Updated)
 * [Configurability](#configurability) (Updated)
-* [TODO](#todo) (Updated)
+* [TODO](#todo)
 * [License](#license)
 
 ## Changelog
@@ -68,6 +69,10 @@ Any advice on how to get funding for open source projects is very welcome!
 
 You can now sponsor this project through github, see [my sponsors page](https://github.com/sponsors/aristocratos) for options.
 
+Also added donation links for [paypal](https://paypal.me/aristocratos) and [ko-fi](https://ko-fi.com/aristocratos).
+
+Any support is greatly appreciated!
+
 ## Compatibility
 
 Should work on most modern linux distributions.
@@ -115,13 +120,26 @@ Options menu.
 
 #### Manual installation
 
-Copy or link "bashtop" into PATH, or just run from cloned directory...
+Copy or link "bashtop" into PATH, or install with Makefile:
+
+>From cloned directory
+
+``` bash
+ sudo make install
+```
+
+>to uninstall it
+
+``` bash
+ sudo make uninstall
+```
+
 
 #### Arch based
 
-Available in the Arch Linux repository as [bashtop](https://www.archlinux.org/packages/community/any/bashtop/)
+Available in the AUR as [bashtop-git](https://aur.archlinux.org/packages/bashtop-git/)
 
-Also available in the AUR as [bashtop-git](https://aur.archlinux.org/packages/bashtop-git/)
+Available in the Arch Linux repository as [bashtop](https://www.archlinux.org/packages/community/any/bashtop/) (Flagged out-of-date on 2020-04-28)
 
 #### Debian based
 
@@ -139,6 +157,18 @@ Or use quick installation:
 
 ``` bash
  sudo ./build --remove
+```
+#### Ubuntu based
+
+Available for Ubuntu from [PPA repository](https://code.launchpad.net/~bashtop-monitor/+archive/ubuntu/bashtop)
+
+>Add PPA repository and install bashtop
+
+``` bash
+ sudo add-apt-repository ppa:bashtop-monitor/bashtop
+ sudo apt update
+ sudo apt install bashtop
+
 ```
 
 ## Configurability
