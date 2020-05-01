@@ -1,7 +1,10 @@
-# ![bashtop](logo-t.png)
+# ![bashtop](Imgs/logo-t.png)
 
-**Usage:** Linux resource monitor  
-**Language:** Bash  
+![os](https://img.shields.io/badge/Os-Linux-yellow)
+![usage](https://img.shields.io/badge/Usage-Linux%20resource%20monitor-red) 
+![Bash](https://img.shields.io/badge/Bash-v4.4%5E-blue) 
+![bashtop_version](https://img.shields.io/github/v/tag/aristocratos/bashtop?label=version)
+[![Donate](https://img.shields.io/badge/-Donate-green)](https://github.com/sponsors/aristocratos)
 
 ## Index
 
@@ -10,12 +13,12 @@
 * [Features](#features)
 * [Themes](#themes)
 * [Upcoming](#upcoming-(osx-and-bsd-support))
-* [Support and funding](#support-and-funding) (Updated)
-* [Compatibility](#compatibility)
+* [Support and funding](#support-and-funding)
+* [Compatibility](#compatibility) (Updated)
 * [Dependencies](#dependencies)
 * [Screenshots](#screenshots)
 * [Installation](#installation)
-* [Configurability](#configurability)
+* [Configurability](#configurability) (Updated)
 * [TODO](#todo) (Updated)
 * [License](#license)
 
@@ -67,7 +70,16 @@ You can now sponsor this project through github, see [my sponsors page](https://
 
 ## Compatibility
 
-Should work on most modern linux distributions with a truecolor capable terminal.
+Should work on most modern linux distributions.
+
+For correct display, a terminal with support for:
+* 24-bit truecolor
+* Wide characters
+
+Also needs a UTF8 locale and a font that covers:
+* Unicode Block “Braille Patterns” U+2800 - U+28FF
+* Unicode Block “Geometric Shapes” U+25A0 - U+25FF
+* Unicode Block "Box Drawing" and "Block Elements" U+2500 - U+259F
 
 ## Dependencies
 
@@ -91,13 +103,13 @@ Bash version 5 is highly recommended to make use of $EPOCHREALTIME variable inst
 ## Screenshots
 
 Main UI showing details for a selected process.  
-![Screenshot 1](main.png)
+![Screenshot 1](Imgs/main.png)
 
 Main menu.  
-![Screenshot 2](menu.png)
+![Screenshot 2](Imgs/menu.png)
 
 Options menu.  
-![Screenshot 3](options.png)
+![Screenshot 3](Imgs/options.png)
 
 ## Installation
 
@@ -137,7 +149,7 @@ Config files stored in "$HOME/.config/bashtop" folder
 #### bashtop.cfg: (auto generated if not found)
 
 ```bash
-#? Config file for bashtop v. 0.8.0
+#? Config file for bashtop v. 0.8.18
 
 #* Color theme, looks for a .theme file in "$HOME/.config/bashtop/themes", "Default" for builtin default theme
 color_theme="Default"
@@ -156,7 +168,7 @@ proc_reversed="false"
 check_temp="true"
 
 #* Draw a clock at top of screen, formatting according to strftime, empty string to disable
-draw_clock="%R"
+draw_clock="%X"
 
 #* Update main ui when menus are showing, set this to false if the menus is flickering too much for comfort
 background_update="true"
@@ -166,6 +178,12 @@ custom_cpu_name=""
 
 #* Enable error logging to "$HOME/.config/bashtop/error.log", "true" or "false"
 error_logging="true"
+
+#* Show color gradient in process list, "true" or "false"
+proc_gradient="true"
+
+#* Optional filter for shown disks, should be names of mountpoints, "root" replaces "/", separate multiple values with space
+disks_filter=""
 ```
 
 #### Command line options: (not yet implemented)
@@ -181,10 +199,10 @@ Might finish off items out of order since I usually work on multiple at a time.
 
 - [x] Add options to change colors for text, graphs and meters.
 - [ ] Fix cross platform compatibility: Currently in testing, bashtop-psutil branch.
-- [ ] Add support for showing AMD cpu temperatures.
+- [x] Add support for showing AMD cpu temperatures.
 - [ ] Add option to show tree view of processes.
-- [ ] Add option to reset network download/upload totals.
-- [ ] Add option to turn of gradient in processes list.
+- [x] Add option to reset network download/upload totals.
+- [x] Add option to turn of gradient in processes list.
 - [ ] Add gpu temp and usage. (If feasible)
 - [ ] Add io stats for disks.
 - [ ] Add options for resizing all boxes.
