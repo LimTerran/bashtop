@@ -1,31 +1,36 @@
 # ![bashtop](Imgs/logo-t.png)
 
 ![os](https://img.shields.io/badge/Os-Linux-yellow?logo=linux)
-![usage](https://img.shields.io/badge/Usage-Linux%20resource%20monitor-red) 
-![Bash](https://img.shields.io/badge/Bash-v4.4%5E-green?logo=GNU%20bash) 
+![usage](https://img.shields.io/badge/Usage-Linux%20resource%20monitor-red)
+![Bash](https://img.shields.io/badge/Bash-v4.4%5E-green?logo=GNU%20bash)
 ![bashtop_version](https://img.shields.io/github/v/tag/aristocratos/bashtop?label=version)
 [![Donate](https://img.shields.io/badge/-Donate-yellow?logo=paypal)](https://paypal.me/aristocratos)
 [![Sponsor](https://img.shields.io/badge/-Sponsor-red?logo=github)](https://github.com/sponsors/aristocratos)
 [![Coffee](https://img.shields.io/badge/-Buy%20me%20a%20Coffee-grey?logo=Ko-fi)](https://ko-fi.com/aristocratos)
+
 ## Index
 
-* [Changelog](#changelog)
+* [Documents](#documents)
 * [Description](#description)
 * [Features](#features)
 * [Themes](#themes)
-* [Upcoming](#upcoming-(osx-and-bsd-support))
-* [Support and funding](#support-and-funding) (Updated)
-* [Compatibility](#compatibility) (Updated)
+* [Upcoming](#upcoming) (Updated, Python port)
+* [Support and funding](#support-and-funding)
+* [Compatibility](#compatibility)
 * [Dependencies](#dependencies)
 * [Screenshots](#screenshots)
 * [Installation](#installation) (Updated)
-* [Configurability](#configurability) (Updated)
-* [TODO](#todo)
+* [Configurability](#configurability)
+* [TODO](#todo) (Updated)
 * [License](#license)
 
-## Changelog
+## Documents
 
 #### [CHANGELOG.md](CHANGELOG.md)
+
+#### [CONTRIBUTING.md](CONTRIBUTING.md)
+
+#### [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
 ## Description
 
@@ -34,7 +39,7 @@ Resource monitor that shows usage and stats for processor, memory, disks, networ
 ## Features
 
 * Easy to use, with a game inspired menu system.
-* Fast and responsive UI with UP, DOWN keys process selection.
+* Fast and "mostly" responsive UI with UP, DOWN keys process selection.
 * Function for showing detailed stats for selected process.
 * Ability to filter processes.
 * Easy switching between sorting options.
@@ -51,12 +56,22 @@ See [themes](themes) folder for available themes.
 
 Let me know if you want to contribute with new themes.
 
-## Upcoming (osx and bsd support)
+## Upcoming
+
+#### (Mac OSX and *BSD support)
 
 Currently rewriting to use python3 [psutil](https://github.com/giampaolo/psutil) for data collection instead of linux specific tools.
 This will add python 3 and psutil as dependencies, but will make bashtop cross platform compatible.
 
-This will be in a new branch called bashtop-psutil when I'm done with initial testing
+~~This will be in a new branch called bashtop-psutil when I'm done with initial testing~~
+
+This will be integrated in to main version when done and add the possibility to switch between psutil and linux tools for users running linux.
+
+#### Update
+
+Work on a complete python port will begin this summer. My aim is to keep it compatible with pypy3 for a lot of added efficiency.
+
+Bash(py)top?
 
 ## Support and funding
 
@@ -78,17 +93,23 @@ Any support is greatly appreciated!
 Should work on most modern linux distributions.
 
 For correct display, a terminal with support for:
+
 * 24-bit truecolor
 * Wide characters
 
 Also needs a UTF8 locale and a font that covers:
+
 * Unicode Block “Braille Patterns” U+2800 - U+28FF
 * Unicode Block “Geometric Shapes” U+25A0 - U+25FF
 * Unicode Block "Box Drawing" and "Block Elements" U+2500 - U+259F
 
+#### Notice
+
+Dropbear seems to not be able to set correct locale. So if accessing bashtop over ssh, OpenSSH is recommended.
+
 ## Dependencies
 
-**[bash](https://www.gnu.org/software/bash/)** (v4.4 or later) Script functionality will most probably break with earlier versions.  
+**[bash](https://www.gnu.org/software/bash/)** (v4.4 or later) Script functionality will most probably break with earlier versions.
 Bash version 5 is highly recommended to make use of $EPOCHREALTIME variable instead of a lot of external date command calls.
 
 **[GNU Core Utilities](https://www.gnu.org/software/coreutils/)**
@@ -105,15 +126,17 @@ Bash version 5 is highly recommended to make use of $EPOCHREALTIME variable inst
 
 (Optional) **[curl](https://curl.haxx.se/download.html)** (v7.16.2 or later) Needed if you want messages about updates and the ability to download themes.
 
+(Optional) **[iostat (part of sysstat)](https://github.com/sysstat/sysstat)** Needed if you want disk read/write stats
+
 ## Screenshots
 
-Main UI showing details for a selected process.  
+Main UI showing details for a selected process.
 ![Screenshot 1](Imgs/main.png)
 
-Main menu.  
+Main menu.
 ![Screenshot 2](Imgs/menu.png)
 
-Options menu.  
+Options menu.
 ![Screenshot 3](Imgs/options.png)
 
 ## Installation
@@ -133,7 +156,6 @@ Copy or link "bashtop" into PATH, or install with Makefile:
 ``` bash
  sudo make uninstall
 ```
-
 
 #### Arch based
 
@@ -158,6 +180,7 @@ Or use quick installation:
 ``` bash
  sudo ./build --remove
 ```
+
 #### Ubuntu based
 
 Available for Ubuntu from [PPA repository](https://code.launchpad.net/~bashtop-monitor/+archive/ubuntu/bashtop)
@@ -168,7 +191,38 @@ Available for Ubuntu from [PPA repository](https://code.launchpad.net/~bashtop-m
  sudo add-apt-repository ppa:bashtop-monitor/bashtop
  sudo apt update
  sudo apt install bashtop
+```
 
+#### Fedora
+
+Available in the Fedora repository.
+
+>Installation
+
+``` bash
+sudo dnf install bashtop
+```
+
+#### CentOS
+
+>Installation
+
+``` bash
+dnf config-manager --set-enabled PowerTools
+dnf install epel-release
+dnf install bashtop
+```
+
+#### RHEL 8
+
+>Installation
+
+``` bash
+ARCH=$( /bin/arch )
+subscription-manager repos --enable
+"codeready-builder-for-rhel-8-${ARCH}-rpms"
+dnf install epel-release
+dnf install bashtop
 ```
 
 ## Configurability
@@ -179,7 +233,7 @@ Config files stored in "$HOME/.config/bashtop" folder
 #### bashtop.cfg: (auto generated if not found)
 
 ```bash
-#? Config file for bashtop v. 0.8.18
+#? Config file for bashtop v. 0.8.28
 
 #* Color theme, looks for a .theme file in "$HOME/.config/bashtop/themes", "Default" for builtin default theme
 color_theme="Default"
@@ -187,7 +241,7 @@ color_theme="Default"
 #* Update time in milliseconds, increases automatically if set below internal loops processing time, recommended 2000 ms or above for better sample times for graphs
 update_ms="2500"
 
-#* Processes sorting, "pid" "program" "arguments" "threads" "user" "memory" "cpu lazy" "cpu responsive"
+#* Processes sorting, "pid" "program" "arguments" "threads" "user" "memory" "cpu lazy" "cpu responsive" "tree"
 #* "cpu lazy" updates sorting over time, "cpu responsive" updates sorting directly at a cpu usage cost
 proc_sorting="cpu lazy"
 
@@ -212,8 +266,17 @@ error_logging="true"
 #* Show color gradient in process list, "true" or "false"
 proc_gradient="true"
 
+#* If process cpu usage should be of the core it's running on or usage of the total available cpu power
+proc_per_core="false"
+
 #* Optional filter for shown disks, should be names of mountpoints, "root" replaces "/", separate multiple values with space
 disks_filter=""
+
+#* Enable check for new version from github.com/aristocratos/bashtop at start
+update_check="true"
+
+#* Enable graphs with double the horizontal resolution, increases cpu usage
+hires_graphs="false"
 ```
 
 #### Command line options: (not yet implemented)
@@ -228,17 +291,23 @@ USAGE: bashtop
 Might finish off items out of order since I usually work on multiple at a time.
 
 - [x] Add options to change colors for text, graphs and meters.
-- [ ] Fix cross platform compatibility: Currently in testing, bashtop-psutil branch.
+- [ ] Fix cross platform compatibility for Mac OSX and *BSD: Currently in testing.
 - [x] Add support for showing AMD cpu temperatures.
-- [ ] Add option to show tree view of processes.
+- [x] Add option to show tree view of processes.
 - [x] Add option to reset network download/upload totals.
 - [x] Add option to turn of gradient in processes list.
 - [ ] Add gpu temp and usage. (If feasible)
-- [ ] Add io stats for disks.
+- [x] Add io stats for disks.
+- [ ] Add cpu and mem stats for docker containers. (If feasible)
+- [ ] Change process list to line scroll instead of page change.
+- [ ] Add option for custom color gradient in process list in theme settings.
+- [ ] Add optional window for tailing log files.
 - [ ] Add options for resizing all boxes.
 - [ ] Add command line argument parsing.
 - [ ] Miscellaneous optimizations and code cleanup.
 - [ ] Add more commenting where it's sparse.
+
+- [ ] Python port.
 
 ## LICENSE
 
