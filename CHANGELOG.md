@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.8.31
+
+* Fixed: Theme 2-color gradient generation
+* Fixed: Theme file error checking
+
+## v0.8.30
+
+* Fixed: Crash on missing net device
+
 ## v0.8.29
 
 * Fixed: Cpu temperature colors not working when above high temp value
