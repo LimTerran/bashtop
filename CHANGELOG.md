@@ -1,5 +1,62 @@
 # Changelog
 
+## v0.9.18
+
+* Fixed: Errors caused by process scroll change
+* Fixed: Process graph creation ignored for process below 0.5%
+
+## v0.9.17
+
+* Changed: Process list now scrolls instead of "page jump" and shows number of processes instead of number of pages
+* Fixed: Inverted gradient on dark text in processes box
+
+## v0.9.16
+
+* Fixed: Errors in v0.9.15 psutil disk collection fix
+* Added: Additional graph creation error checks
+
+## v0.9.15
+
+* Fixed: Psutil error on disk collection now fallback to df and iostat
+
+## v0.9.14
+
+* Added: Additional processes error checking
+* Added: Additional sensors error checking
+* Added: Additional psutil error checking
+
+## v0.9.13
+
+* Added: More robust psutil error handling
+
+## v0.9.12
+
+* Changed: Psutil data collection now runs a python script in a coprocess taking commands and sending output over coproc pipes
+* Added: Psutil data collection now replaces most external calls including sensors, cpu info, disks info and io collection
+* Changed: Tree view is now a toggle instead of sorting option
+* Fixed: Cpu temp check not using vcgencmd when sensors is available
+
+## v0.9.11
+
+* Fixed: Processes text color now sets RGB instead of RBB...
+
+## v0.9.10
+
+* Fixed: Humanizer function now round values 1000-1023 up to 1024 to fit size constraints.
+* Added: More error checks for psutil
+* Changed: Terminal title now includes original title if $TERMINAL_TITLE is set, suggested by @theytaz
+
+## v0.9.9
+
+* Fixed: Fixed theme downloader not reporting new themes and corrected comment in config
+
+## v0.9.8
+
+* Added: Nord theme by Justin Zobel
+* Changed: Theme downloader now overwrites default themes, folder user_themes (safe from overwrites) added
+* Changed: Cleaned up monokai theme variants
+* Added: Base for testing with BATS by Maciek Swiech
+
 ## v0.9.7
 
 * Changed: UTF-8 locale check, try to find UTF-8 for current language if LANG is set but not with "UTF-8" suffix

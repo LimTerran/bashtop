@@ -7,6 +7,7 @@
 ![Bash](https://img.shields.io/badge/Bash-v4.4%5E-green?logo=GNU%20bash)
 ![Python](https://img.shields.io/badge/Python-v3.6%5E-orange?logo=python)
 ![bashtop_version](https://img.shields.io/github/v/tag/aristocratos/bashtop?label=version)
+[![Build Status](https://travis-ci.com/aristocratos/bashtop.svg?branch=master)](https://travis-ci.com/aristocratos/bashtop)
 [![Donate](https://img.shields.io/badge/-Donate-yellow?logo=paypal)](https://paypal.me/aristocratos)
 [![Sponsor](https://img.shields.io/badge/-Sponsor-red?logo=github)](https://github.com/sponsors/aristocratos)
 [![Coffee](https://img.shields.io/badge/-Buy%20me%20a%20Coffee-grey?logo=Ko-fi)](https://ko-fi.com/aristocratos)
@@ -16,14 +17,14 @@
 * [Documents](#documents)
 * [Description](#description)
 * [Features](#features)
-* [Themes](#themes)
-* [Upcoming](#upcoming) (Updated, Python port)
+* [Themes](#themes) (Updated)
+* [Upcoming](#upcoming) (Python port)
 * [Support and funding](#support-and-funding)
-* [Compatibility](#compatibility) (Updated, OSX and FreeBSD Support)
+* [Compatibility](#compatibility) (OSX and FreeBSD Support)
 * [Dependencies](#dependencies) (Updated)
 * [Screenshots](#screenshots)
 * [Installation](#installation) (Updated)
-* [Configurability](#configurability)
+* [Configurability](#configurability) (Updated)
 * [TODO](#todo) (Updated)
 * [License](#license)
 
@@ -58,6 +59,9 @@ Resource monitor that shows usage and stats for processor, memory, disks, networ
 Bashtop now has theme support and a function to download missing local themes from repository.
 
 See [themes](themes) folder for available themes.
+
+The builtin theme downloader places the default themes in `$HOME/.config/bashtop/themes`.
+User created themes should be placed in `$HOME/.config/bashtop/user_themes` to be safe from overwrites.
 
 Let me know if you want to contribute with new themes.
 
@@ -220,6 +224,8 @@ Available in the Arch Linux repository as [bashtop](https://www.archlinux.org/pa
 
 #### Debian based
 
+Available in [official Debian repository](https://tracker.debian.org/pkg/bashtop) since Debian 11
+
 Available for debian/ubuntu from [Azlux's repository](http://packages.azlux.fr/)
 
 Or use quick installation:
@@ -237,6 +243,8 @@ Or use quick installation:
 ```
 
 #### Ubuntu based
+
+Available in [official Ubuntu repository](https://launchpad.net/ubuntu/+source/bashtop) since Ubuntu 20.10
 
 Available for Ubuntu from [PPA repository](https://code.launchpad.net/~bashtop-monitor/+archive/ubuntu/bashtop)
 
@@ -258,7 +266,7 @@ Available in the Fedora repository.
 sudo dnf install bashtop
 ```
 
-#### CentOS
+#### CentOS 8
 
 >Installation
 
@@ -288,9 +296,9 @@ Config files stored in "$HOME/.config/bashtop" folder
 #### bashtop.cfg: (auto generated if not found)
 
 ```bash
-#? Config file for bashtop v. 0.9.0
+#? Config file for bashtop v. 0.9.9
 
-#* Color theme, looks for a .theme file in "$HOME/.config/bashtop/themes", "Default" for builtin default theme
+#* Color theme, looks for a .theme file in "$HOME/.config/bashtop/themes" and "$HOME/.config/bashtop/user_themes", "Default" for builtin default theme
 color_theme="Default"
 
 #* Update time in milliseconds, increases automatically if set below internal loops processing time, recommended 2000 ms or above for better sample times for graphs
@@ -362,10 +370,13 @@ Might finish off items out of order since I usually work on multiple at a time.
 - [ ] Add optional window for tailing log files.
 - [ ] Add options for resizing all boxes.
 - [ ] Add command line argument parsing.
+- [ ] Builtin updater. Relevant PR #96 by Jukoo
+- [ ] Add support for zram in memory box. Relevant PR #122 by perkinslr
+
 - [ ] Miscellaneous optimizations and code cleanup.
 - [ ] Add more commenting where it's sparse.
 
-- [ ] Python port.
+- [ ] Python port. (Porting started)
 
 ## LICENSE
 
